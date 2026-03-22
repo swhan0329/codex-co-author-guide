@@ -1,15 +1,15 @@
 :root {
-  --bg: #fbfbf9;
-  --panel: #ffffff;
-  --panel-muted: #f4f4f0;
-  --border: #e7e6de;
-  --border-strong: #d8d5ca;
-  --text: #1f1f1b;
-  --muted: #686759;
-  --soft: #8a8878;
-  --accent: #0f172a;
-  --accent-soft: #eef1f6;
-  --link: #2563eb;
+  --bg: #050505;
+  --panel: #0d0d0d;
+  --panel-muted: #121212;
+  --border: #232323;
+  --border-strong: #3a3a3a;
+  --text: #f4f4f1;
+  --muted: #b2b2aa;
+  --soft: #8b8b83;
+  --accent: #ffffff;
+  --accent-soft: #181818;
+  --link: #ffffff;
   --max-width: 1480px;
   --content-width: 780px;
   --header-height: 64px;
@@ -32,9 +32,7 @@ body {
   margin: 0;
   color: var(--text);
   font-family: var(--font-sans);
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.015), transparent 220px),
-    var(--bg);
+  background: var(--bg);
 }
 
 a {
@@ -58,7 +56,7 @@ pre {
 code {
   padding: 0.12rem 0.38rem;
   border-radius: 8px;
-  background: #f0efe9;
+  background: #171717;
   font-size: 0.93em;
 }
 
@@ -66,10 +64,10 @@ pre {
   margin: 0;
   padding: 18px 20px;
   overflow-x: auto;
-  border: 1px solid #202226;
+  border: 1px solid var(--border-strong);
   border-radius: 14px;
-  background: #111214;
-  color: #eef2f7;
+  background: #000000;
+  color: #f7f7f4;
   line-height: 1.65;
 }
 
@@ -88,8 +86,8 @@ pre code {
   top: 0;
   z-index: 20;
   border-bottom: 1px solid var(--border);
-  background: rgba(251, 251, 249, 0.92);
-  backdrop-filter: blur(14px);
+  background: rgba(5, 5, 5, 0.92);
+  backdrop-filter: blur(12px);
 }
 
 .site-header-inner {
@@ -119,7 +117,7 @@ pre code {
   height: 30px;
   border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: var(--panel);
+  background: #000000;
   font-size: 0.92rem;
 }
 
@@ -323,12 +321,13 @@ pre code {
 
 .button:hover {
   text-decoration: none;
-  background: var(--panel-muted);
+  background: #171717;
 }
 
 .button.primary {
-  border-color: #d0d9e7;
-  background: var(--accent-soft);
+  border-color: var(--border-strong);
+  background: #ffffff;
+  color: #000000;
 }
 
 .button.ghost {
@@ -444,8 +443,8 @@ pre code {
   height: 30px;
   margin-bottom: 14px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--text);
+  background: #ffffff;
+  color: #000000;
   font-weight: 700;
 }
 
