@@ -6,7 +6,7 @@
     <title>Codex Co-author Guide</title>
     <meta
       name="description"
-      content="Bilingual practical documentation for using sample-codex-coauthor with scripts or Codex skills."
+      content="Practical English guide for using sample-codex-coauthor in a real repository."
     >
     <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml">
     <link rel="stylesheet" href="assets/docs.css?v=2">
@@ -20,13 +20,13 @@
             <span>Codex Co-author Guide</span>
           </a>
           <nav class="header-nav">
-            <a class="header-link active" href="./">Home</a>
+            <a class="header-link active" href="./">English</a>
             <a class="header-link" href="ko/">Korean</a>
-            <a class="header-link" href="en/">English</a>
-            <a class="header-link" href="examples/">Examples</a>
+            <a class="header-link" href="examples/vehicle_speed_estimation/">Example EN</a>
+            <a class="header-link" href="examples/vehicle_speed_estimation/ko/">Example KO</a>
           </nav>
           <div class="header-actions">
-            <a class="header-pill" href="https://github.com/swhan0329/codex-co-author-guide">GitHub</a>
+            <a class="header-pill" href="README.md">Markdown</a>
           </div>
         </div>
       </header>
@@ -35,35 +35,22 @@
         <aside class="sidebar">
           <div class="sidebar-inner">
             <div class="sidebar-group">
-              <div class="sidebar-title">Home</div>
+              <div class="sidebar-title">English guide</div>
               <ul class="sidebar-list">
                 <li><a class="active" href="#overview">Overview</a></li>
-                <li><a href="#two-paths">Scripts and skills</a></li>
-                <li><a href="#docs">Docs</a></li>
-                <li><a href="#next">Next steps</a></li>
+                <li><a href="#when">When to use it</a></li>
+                <li><a href="#flow">Basic flow</a></li>
+                <li><a href="#clone">Why setup repeats</a></li>
+                <li><a href="#skills">Skill path</a></li>
+                <li><a href="#example">Real example</a></li>
               </ul>
             </div>
             <div class="sidebar-group">
-              <h3>Guides</h3>
+              <h3>Quick links</h3>
               <ul class="sidebar-list">
                 <li><a href="ko/">Korean guide</a></li>
-                <li><a href="en/">English guide</a></li>
-                <li><a href="examples/">Examples</a></li>
-              </ul>
-            </div>
-            <div class="sidebar-group">
-              <h3>Source repos</h3>
-              <ul class="sidebar-list">
-                <li>
-                  <a href="https://github.com/sigridjineth/sample-codex-coauthor">
-                    sample-codex-coauthor
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/swhan0329/vehicle_speed_estimation">
-                    vehicle_speed_estimation
-                  </a>
-                </li>
+                <li><a href="examples/vehicle_speed_estimation/">Example EN</a></li>
+                <li><a href="examples/vehicle_speed_estimation/ko/">Example KO</a></li>
               </ul>
             </div>
           </div>
@@ -73,125 +60,119 @@
           <article class="article">
             <header class="article-header" id="overview">
               <div class="article-meta">
-                <span class="eyebrow">Repository-level Git hook pattern</span>
-                <span>Updated for bilingual docs and webpage delivery</span>
+                <span class="eyebrow">Practical English guide</span>
+                <span>Codex co-author trailer automation</span>
               </div>
-              <h1>Make Codex show up in your Git commits.</h1>
+              <h1>Add Codex to your Git commit history without changing your normal workflow.</h1>
               <p class="summary">
-                This documentation explains how to use
+                Use the
                 <a href="https://github.com/sigridjineth/sample-codex-coauthor">sample-codex-coauthor</a>
-                so a normal Git commit automatically appends
-                <code>Co-authored-by: codex &lt;codex@openai.com&gt;</code>.
-                It does not replace your normal GitHub flow. It simply makes the
-                co-author trailer automatic.
+                pattern to automatically append
+                <code>Co-authored-by: codex &lt;codex@openai.com&gt;</code>
+                to your commits.
               </p>
               <div class="action-row">
-                <a class="button primary" href="ko/">Read in Korean</a>
-                <a class="button" href="en/">Read in English</a>
-                <a class="button ghost" href="examples/">See real example</a>
-              </div>
-              <div class="inline-meta">
-                <span class="pill">Docs repo</span>
-                <span class="pill">Static web pages</span>
-                <span class="pill">GitHub-friendly Markdown</span>
+                <a class="button primary" href="examples/vehicle_speed_estimation/">Read the real example</a>
+                <a class="button" href="ko/">Read in Korean</a>
               </div>
             </header>
 
-            <section class="article-section" id="two-paths">
-              <h2>Two valid ways to use the original sample repo</h2>
+            <section class="article-section" id="when">
+              <h2>When to use it</h2>
+              <div class="mini-grid">
+                <div class="panel">
+                  <div class="label">Use it if</div>
+                  <ul>
+                    <li>you work with Codex app or CLI</li>
+                    <li>you still create commits yourself</li>
+                    <li>you want GitHub to show Codex as a co-author</li>
+                  </ul>
+                </div>
+                <div class="panel">
+                  <div class="label">Skip it if</div>
+                  <ul>
+                    <li>you do not care about the trailer</li>
+                    <li>your normal commit flow is already enough</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="article-section" id="flow">
+              <h2>Basic flow</h2>
+              <div class="steps">
+                <div class="step">
+                  <div class="step-index">1</div>
+                  <h3>Clone the repository</h3>
+                  <p>Start with a normal local clone.</p>
+                </div>
+                <div class="step">
+                  <div class="step-index">2</div>
+                  <h3>Run setup once</h3>
+                  <p><code>bash scripts/setup-codex-attribution.sh</code></p>
+                </div>
+                <div class="step">
+                  <div class="step-index">3</div>
+                  <h3>Work with Codex</h3>
+                  <p>Use Codex app or CLI inside the repository.</p>
+                </div>
+                <div class="step">
+                  <div class="step-index">4</div>
+                  <h3>Commit normally</h3>
+                  <p>The hook appends the trailer automatically.</p>
+                </div>
+              </div>
+              <pre><code>bash scripts/setup-codex-attribution.sh
+git add .
+git commit -m "Fix small bug"
+git show -s --format=%B HEAD</code></pre>
+            </section>
+
+            <section class="article-section" id="clone">
+              <h2>Why setup must be repeated in a new clone</h2>
               <p>
-                The original sample repository supports both a direct script path
-                and a more agent-native Codex skill path.
+                Because the script writes local Git configuration into
+                <code>.git/config</code>. Files can live in the repository, but
+                activation still happens per clone.
               </p>
-              <div class="panel-grid">
+            </section>
+
+            <section class="article-section" id="skills">
+              <h2>The original sample repo also supports a skill path</h2>
+              <p>
+                The original sample repo supports both a direct script path and a
+                repo-local Codex skill path.
+              </p>
+              <div class="mini-grid">
                 <div class="panel">
                   <div class="label">Script path</div>
-                  <h3>Run the setup shell script directly</h3>
                   <pre><code>bash scripts/setup-codex-attribution.sh</code></pre>
-                  <p class="muted">
-                    Best default for beginners because it is explicit and easy to
-                    teach in a README or blog post.
-                  </p>
                 </div>
                 <div class="panel">
                   <div class="label">Skill path</div>
-                  <h3>Ask Codex to use repo-local skills</h3>
                   <ul>
                     <li><code>$install-codex-coauthor-hook</code></li>
                     <li><code>$add-ai-coauthor</code></li>
                     <li><code>$show-ai-attribution-status</code></li>
                   </ul>
-                  <p class="muted">
-                    Useful when you want the workflow to feel native inside Codex.
-                  </p>
-                </div>
-                <div class="panel">
-                  <div class="label">Practical path</div>
-                  <h3>Keep a production repo minimal</h3>
-                  <ul>
-                    <li><code>.githooks/prepare-commit-msg</code></li>
-                    <li><code>.gitmessage</code></li>
-                    <li><code>scripts/setup-codex-attribution.sh</code></li>
-                  </ul>
-                  <p class="muted">
-                    This is the setup used in the real example repository.
-                  </p>
                 </div>
               </div>
             </section>
 
-            <section class="article-section" id="docs">
-              <h2>Choose the version you want to read</h2>
-              <div class="link-grid">
-                <div class="panel">
-                  <div class="label">Korean</div>
-                  <h3>Practical Korean guide</h3>
-                  <p class="muted">
-                    Use this if your primary audience is Korean-speaking and you
-                    want the easiest explanation path.
-                  </p>
-                  <div class="action-row">
-                    <a class="button primary" href="ko/">Open Korean guide</a>
-                    <a class="button" href="ko/README.md">Markdown</a>
-                  </div>
-                </div>
-                <div class="panel">
-                  <div class="label">English</div>
-                  <h3>Practical English guide</h3>
-                  <p class="muted">
-                    Use this for broader sharing or when linking from English
-                    posts and GitHub conversations.
-                  </p>
-                  <div class="action-row">
-                    <a class="button primary" href="en/">Open English guide</a>
-                    <a class="button" href="en/README.md">Markdown</a>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="article-section" id="next">
-              <h2>Next step: read the real repository example</h2>
+            <section class="article-section" id="example">
+              <h2>Open the real example next</h2>
               <p>
-                The most practical page in this repo is the example for
-                <code>vehicle_speed_estimation</code>. It shows exactly what to do
-                after cloning a real repository.
+                The most practical page in this repo is the
+                <code>vehicle_speed_estimation</code> example. It shows exactly
+                what to type after cloning a real repository.
               </p>
-              <div class="callout">
-                <strong>Recommended reading order:</strong>
-                Home → Korean or English guide → vehicle_speed_estimation example
-              </div>
               <div class="action-row">
-                <a class="button primary" href="examples/vehicle_speed_estimation/ko/">
-                  Open Korean example
+                <a class="button primary" href="examples/vehicle_speed_estimation/">
+                  Open Example EN
                 </a>
-                <a class="button" href="examples/vehicle_speed_estimation/">
-                  Open English example
+                <a class="button" href="examples/vehicle_speed_estimation/ko/">
+                  Open Example KO
                 </a>
-              </div>
-              <div class="footer-note">
-                This site is designed to be short enough for social sharing and
-                detailed enough for GitHub readers who want a real setup path.
               </div>
             </section>
           </article>
@@ -203,9 +184,11 @@
               <div class="toc-title">On this page</div>
               <ul class="toc-list">
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#two-paths">Scripts and skills</a></li>
-                <li><a href="#docs">Docs</a></li>
-                <li><a href="#next">Next steps</a></li>
+                <li><a href="#when">When to use it</a></li>
+                <li><a href="#flow">Basic flow</a></li>
+                <li><a href="#clone">Why setup repeats</a></li>
+                <li><a href="#skills">Skill path</a></li>
+                <li><a href="#example">Real example</a></li>
               </ul>
             </div>
           </div>
