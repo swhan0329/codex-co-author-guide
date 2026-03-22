@@ -6,82 +6,147 @@
     <title>vehicle_speed_estimation 예시</title>
     <meta
       name="description"
-      content="sample-codex-coauthor를 실제 레포에 적용한 한국어 예시"
+      content="vehicle_speed_estimation을 clone한 뒤 Codex co-author를 적용하는 한국어 예시"
     >
     <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../assets/docs.css">
   </head>
   <body>
-    <main class="page">
-      <header class="topbar">
-        <div class="brand">Codex Co-author Guide</div>
-        <nav class="nav">
-          <a href="../../../">Home</a>
-          <a href="../../../ko/">Korean</a>
-          <a href="../../../en/">English</a>
-          <a class="active" href="../../">Examples</a>
-        </nav>
-      </header>
-
-      <section class="hero">
-        <article class="hero-card">
-          <span class="eyebrow">한국어 예시</span>
-          <h1><code>vehicle_speed_estimation</code>에 최소 구성으로 적용한 사례</h1>
-          <p class="lede">
-            원본 sample repo 전체를 그대로 들고 오지 않고, 핵심 Git hook 흐름만 남긴
-            실제 적용 사례입니다.
-          </p>
-          <div class="button-row">
-            <a class="button primary" href="../../vehicle_speed_estimation.ko.md">Markdown source</a>
-            <a class="button secondary" href="../">English page</a>
-          </div>
-        </article>
-      </section>
-
-      <section class="section">
-        <h2>무엇을 남겼나</h2>
-        <ul>
-          <li><code>.githooks/prepare-commit-msg</code></li>
-          <li><code>.gitmessage</code></li>
-          <li><code>scripts/setup-codex-attribution.sh</code></li>
-        </ul>
-      </section>
-
-      <section class="section">
-        <h2>무엇을 뺐나</h2>
-        <p>
-          원본 sample repo에는 <code>.agents/skills</code> 아래의 repo-local Codex
-          skill 파일도 있었지만, 실제 적용 레포에서는 핵심 Git hook 흐름에 꼭 필요하지
-          않아서 제거했습니다.
-        </p>
-      </section>
-
-      <section class="section">
-        <h2>직접 테스트한 흐름</h2>
-        <ol>
-          <li>작은 코드 변경 수행</li>
-          <li>테스트 통과 확인</li>
-          <li>Codex co-author attribution 활성화</li>
-          <li>커밋 생성</li>
-          <li>커밋 본문에 Codex trailer 포함 확인</li>
-          <li>GitHub 원격 브랜치로 push</li>
-        </ol>
-        <pre class="plain"><code>Co-authored-by: codex &lt;codex@openai.com&gt;</code></pre>
-      </section>
-
-      <section class="section">
-        <h2>왜 이 예시가 중요한가</h2>
-        <div class="two-col">
-          <div class="card">
-            <div class="label">원본 sample repo</div>
-            <p>스크립트 방식과 skill 방식을 모두 설명하는 전체 예시입니다.</p>
-          </div>
-          <div class="card">
-            <div class="label">실제 적용 레포</div>
-            <p>최소 구성만 남겨도 충분히 실용적으로 운영할 수 있음을 보여줍니다.</p>
+    <div class="page">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../">
+            <span class="brand-mark">C</span>
+            <span>Codex Co-author Guide</span>
+          </a>
+          <nav class="header-nav">
+            <a class="header-link" href="../../../">Home</a>
+            <a class="header-link" href="../../../ko/">Korean</a>
+            <a class="header-link" href="../../../en/">English</a>
+            <a class="header-link active" href="../../">Examples</a>
+          </nav>
+          <div class="header-actions">
+            <a class="header-pill" href="../../vehicle_speed_estimation.ko.md">Markdown</a>
           </div>
         </div>
-      </section>
-    </main>
+      </header>
+
+      <div class="doc-layout">
+        <aside class="sidebar">
+          <div class="sidebar-inner">
+            <div class="sidebar-group">
+              <div class="sidebar-title">예시</div>
+              <ul class="sidebar-list">
+                <li><a class="active" href="#overview">개요</a></li>
+                <li><a href="#step-1">1. clone</a></li>
+                <li><a href="#step-2">2. setup 실행</a></li>
+                <li><a href="#step-3">3. Codex로 작업</a></li>
+                <li><a href="#step-4">4. 테스트</a></li>
+                <li><a href="#step-5">5. commit</a></li>
+                <li><a href="#step-6">6. 확인</a></li>
+                <li><a href="#step-7">7. push</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="content">
+          <article class="article">
+            <header class="article-header" id="overview">
+              <div class="article-meta">
+                <span class="eyebrow">실제 레포 예시</span>
+                <span><a href="https://github.com/swhan0329/vehicle_speed_estimation">swhan0329/vehicle_speed_estimation</a></span>
+              </div>
+              <h1><code>vehicle_speed_estimation</code>을 clone한 뒤 실제로 무엇을 하면 되나</h1>
+              <p class="summary">
+                이 페이지는 비교 설명보다 실제 실행 순서에 집중합니다.
+                <code>vehicle_speed_estimation</code>을 clone한 사람이 Codex co-author
+                trailer가 자동으로 붙게 하려면 어떤 명령을 치면 되는지 단계별로 적었습니다.
+              </p>
+              <div class="callout">
+                <strong>목표:</strong>
+                <code>Co-authored-by: codex &lt;codex@openai.com&gt;</code>가 커밋에 자동 추가되게 만들기
+              </div>
+            </header>
+
+            <section class="article-section" id="step-1">
+              <h2>1. 레포를 clone 한다</h2>
+              <pre><code>git clone https://github.com/swhan0329/vehicle_speed_estimation.git
+cd vehicle_speed_estimation</code></pre>
+            </section>
+
+            <section class="article-section" id="step-2">
+              <h2>2. co-author 자동 추가를 켠다</h2>
+              <p>
+                이 레포에는 이미 필요한 파일이 들어 있으므로, 아래만 실행하면 됩니다.
+              </p>
+              <pre><code>bash scripts/setup-codex-attribution.sh</code></pre>
+              <p class="muted">
+                이 단계는 같은 clone에서는 한 번만 하면 됩니다. 새 clone이면 다시 해야 합니다.
+              </p>
+            </section>
+
+            <section class="article-section" id="step-3">
+              <h2>3. Codex로 레포를 연다</h2>
+              <ul>
+                <li>Codex app: <code>vehicle_speed_estimation</code> 폴더를 연다</li>
+                <li>Codex CLI: 레포 폴더에서 <code>codex</code>를 실행한다</li>
+              </ul>
+              <pre><code>이 레포에서 작은 개선점 하나를 찾아 수정하고 테스트까지 돌려줘.</code></pre>
+            </section>
+
+            <section class="article-section" id="step-4">
+              <h2>4. 테스트를 돌린다</h2>
+              <p>이 레포는 둘 다 됩니다.</p>
+              <pre><code>pytest -q</code></pre>
+              <p class="muted">또는</p>
+              <pre><code>python -m unittest discover -s tests</code></pre>
+            </section>
+
+            <section class="article-section" id="step-5">
+              <h2>5. 평소처럼 commit 한다</h2>
+              <pre><code>git add .
+git commit -m "Fix small issue in vehicle_speed_estimation"</code></pre>
+              <p>
+                이때 Codex trailer를 직접 적을 필요는 없습니다. 훅이 자동으로 붙입니다.
+              </p>
+            </section>
+
+            <section class="article-section" id="step-6">
+              <h2>6. 실제로 붙었는지 확인한다</h2>
+              <pre><code>git show -s --format=%B HEAD</code></pre>
+              <p>정상이라면 이렇게 보입니다.</p>
+              <pre><code>Fix small issue in vehicle_speed_estimation
+
+Co-authored-by: codex &lt;codex@openai.com&gt;</code></pre>
+            </section>
+
+            <section class="article-section" id="step-7">
+              <h2>7. 원격으로 push 한다</h2>
+              <pre><code>git push origin &lt;브랜치명&gt;</code></pre>
+              <p>그 다음은 평소처럼 PR을 열고 GitHub에서 merge 하면 됩니다.</p>
+            </section>
+          </article>
+        </main>
+
+        <aside class="toc">
+          <div class="toc-inner">
+            <div class="toc-group">
+              <div class="toc-title">On this page</div>
+              <ul class="toc-list">
+                <li><a href="#overview">개요</a></li>
+                <li><a href="#step-1">1. clone</a></li>
+                <li><a href="#step-2">2. setup 실행</a></li>
+                <li><a href="#step-3">3. Codex로 작업</a></li>
+                <li><a href="#step-4">4. 테스트</a></li>
+                <li><a href="#step-5">5. commit</a></li>
+                <li><a href="#step-6">6. 확인</a></li>
+                <li><a href="#step-7">7. push</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>

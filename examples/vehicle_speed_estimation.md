@@ -3,50 +3,143 @@
 Repository:
 - <https://github.com/swhan0329/vehicle_speed_estimation>
 
-This is a real example of applying the `sample-codex-coauthor` pattern to an existing repository.
+This guide shows the practical flow after cloning `vehicle_speed_estimation`.
 
-## What was kept
-
-The practical setup was reduced to the minimum required files:
-
-- `.githooks/prepare-commit-msg`
-- `.gitmessage`
-- `scripts/setup-codex-attribution.sh`
-
-## What was removed
-
-The original sample repo also contained repo-local Codex skill files under `.agents/skills`.
-
-Those were removed in the real application repository because they were not required for the core Git hook workflow.
-
-## Why this example matters
-
-It shows the difference between:
-
-- the original sample repository, which demonstrates both script-based and skill-based usage
-- a production repository, where you may prefer the smallest possible footprint
-
-## Actual tested flow
-
-The following was tested directly:
-
-1. make a small code change in `vehicle_speed_estimation`
-2. run tests successfully
-3. enable Codex co-author attribution
-4. create a commit
-5. confirm that the commit body includes:
+The goal is to make future commits automatically include:
 
 ```text
 Co-authored-by: codex <codex@openai.com>
 ```
 
-6. push the branch to GitHub
+## Who this is for
 
-## Practical takeaway
+Follow this example if all of the following are true:
 
-For documentation:
+- you cloned `vehicle_speed_estimation`
+- you use Codex app or Codex CLI to help with edits
+- you still plan to do the normal Git steps yourself
 
-- explain the original sample repo with both scripts and skills
-- explain the real-world application repo with the minimal setup
+## Step-by-step
 
-That gives readers both the full feature picture and the simplest path to adoption.
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/swhan0329/vehicle_speed_estimation.git
+cd vehicle_speed_estimation
+```
+
+### 2. Enable the co-author hook
+
+The repository already contains the required files, so run:
+
+```bash
+bash scripts/setup-codex-attribution.sh
+```
+
+This writes the following local Git settings:
+
+```bash
+core.hooksPath=.githooks
+commit.template=.gitmessage
+ai.coauthor=codex <codex@openai.com>
+```
+
+Important:
+
+- run it once per local clone
+- run it again in a new clone
+
+### 3. Open the repository with Codex
+
+Either option works:
+
+- Codex app: open the `vehicle_speed_estimation` folder
+- Codex CLI: run `codex` inside the repository
+
+Example prompt:
+
+```text
+Find a small improvement in this repository, fix it, and run the tests.
+```
+
+### 4. Run tests
+
+Either command works in this repository:
+
+```bash
+pytest -q
+```
+
+or
+
+```bash
+python -m unittest discover -s tests
+```
+
+### 5. Commit normally
+
+```bash
+git add .
+git commit -m "Fix small issue in vehicle_speed_estimation"
+```
+
+You do not need to type the co-author trailer yourself.
+
+### 6. Verify the commit body
+
+```bash
+git show -s --format=%B HEAD
+```
+
+Expected result:
+
+```text
+Fix small issue in vehicle_speed_estimation
+
+Co-authored-by: codex <codex@openai.com>
+```
+
+### 7. Push the branch
+
+```bash
+git push origin <branch-name>
+```
+
+### 8. Open a PR and merge on GitHub
+
+From here, the workflow is the normal GitHub flow.
+
+## Common confusion
+
+### Does installing Codex app or CLI make this automatic?
+
+No.
+
+- Codex install/login is user-level setup
+- the co-author hook is repository-clone-level setup
+
+### Why must I run setup again in a new clone?
+
+Because the script modifies local Git config in `.git/config`.
+
+That means:
+
+- same clone: run once
+- new clone: run again
+
+## Short version
+
+For `vehicle_speed_estimation`, the easiest mental model is:
+
+1. clone the repository
+2. run `bash scripts/setup-codex-attribution.sh` once
+3. work with Codex
+4. run tests
+5. commit normally
+6. push normally
+
+After that, commits in that clone will automatically include:
+
+```text
+Co-authored-by: codex <codex@openai.com>
+```

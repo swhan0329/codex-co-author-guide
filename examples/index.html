@@ -12,55 +12,89 @@
     <link rel="stylesheet" href="../assets/docs.css">
   </head>
   <body>
-    <main class="page">
-      <header class="topbar">
-        <div class="brand">Codex Co-author Guide</div>
-        <nav class="nav">
-          <a href="../">Home</a>
-          <a href="../ko/">Korean</a>
-          <a href="../en/">English</a>
-          <a class="active" href="./">Examples</a>
-        </nav>
-      </header>
-
-      <section class="hero">
-        <article class="hero-card">
-          <span class="eyebrow">Real repo example</span>
-          <h1>See how the pattern looks in an actual repository.</h1>
-          <p class="lede">
-            The <code>vehicle_speed_estimation</code> example shows what was kept,
-            what was removed, and why a production repository may prefer a minimal
-            Git hook setup.
-          </p>
-          <div class="button-row">
-            <a class="button primary" href="vehicle_speed_estimation/">English example page</a>
-            <a class="button secondary" href="vehicle_speed_estimation/ko/">한국어 예시 페이지</a>
-          </div>
-        </article>
-      </section>
-
-      <section class="section">
-        <h2>Source docs</h2>
-        <div class="two-col">
-          <div class="card">
-            <div class="label">Markdown</div>
-            <ul>
-              <li><a href="vehicle_speed_estimation.md">English Markdown</a></li>
-              <li><a href="vehicle_speed_estimation.ko.md">한국어 Markdown</a></li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="label">Repository</div>
-            <ul>
-              <li>
-                <a href="https://github.com/swhan0329/vehicle_speed_estimation">
-                  swhan0329/vehicle_speed_estimation
-                </a>
-              </li>
-            </ul>
+    <div class="page">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../">
+            <span class="brand-mark">C</span>
+            <span>Codex Co-author Guide</span>
+          </a>
+          <nav class="header-nav">
+            <a class="header-link" href="../">Home</a>
+            <a class="header-link" href="../ko/">Korean</a>
+            <a class="header-link" href="../en/">English</a>
+            <a class="header-link active" href="./">Examples</a>
+          </nav>
+          <div class="header-actions">
+            <a class="header-pill" href="../README.md">Repo README</a>
           </div>
         </div>
-      </section>
-    </main>
+      </header>
+
+      <div class="doc-layout">
+        <aside class="sidebar">
+          <div class="sidebar-inner">
+            <div class="sidebar-group">
+              <div class="sidebar-title">Examples</div>
+              <ul class="sidebar-list">
+                <li><a class="active" href="#overview">Overview</a></li>
+                <li><a href="#vehicle">vehicle_speed_estimation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="content">
+          <article class="article">
+            <header class="article-header" id="overview">
+              <div class="article-meta">
+                <span class="eyebrow">Real repository example</span>
+                <span>Practical adoption path</span>
+              </div>
+              <h1>See how the pattern looks in an actual repository.</h1>
+              <p class="summary">
+                The <code>vehicle_speed_estimation</code> example is written as a
+                copy-paste-friendly operational guide: clone the repo, run setup,
+                work with Codex, test, commit, verify, and push.
+              </p>
+            </header>
+
+            <section class="article-section" id="vehicle">
+              <h2><code>vehicle_speed_estimation</code></h2>
+              <div class="link-grid">
+                <div class="panel">
+                  <div class="label">Korean</div>
+                  <h3>한국어 step-by-step 예시</h3>
+                  <div class="action-row">
+                    <a class="button primary" href="vehicle_speed_estimation/ko/">Open page</a>
+                    <a class="button" href="vehicle_speed_estimation.ko.md">Markdown</a>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="label">English</div>
+                  <h3>English step-by-step example</h3>
+                  <div class="action-row">
+                    <a class="button primary" href="vehicle_speed_estimation/">Open page</a>
+                    <a class="button" href="vehicle_speed_estimation.md">Markdown</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+        </main>
+
+        <aside class="toc">
+          <div class="toc-inner">
+            <div class="toc-group">
+              <div class="toc-title">On this page</div>
+              <ul class="toc-list">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#vehicle">vehicle_speed_estimation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>

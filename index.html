@@ -12,132 +12,205 @@
     <link rel="stylesheet" href="assets/docs.css">
   </head>
   <body>
-    <main class="page">
-      <header class="topbar">
-        <div class="brand">Codex Co-author Guide</div>
-        <nav class="nav">
-          <a class="active" href="./">Home</a>
-          <a href="ko/">Korean</a>
-          <a href="en/">English</a>
-          <a href="examples/">Examples</a>
-        </nav>
+    <div class="page">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="./">
+            <span class="brand-mark">C</span>
+            <span>Codex Co-author Guide</span>
+          </a>
+          <nav class="header-nav">
+            <a class="header-link active" href="./">Home</a>
+            <a class="header-link" href="ko/">Korean</a>
+            <a class="header-link" href="en/">English</a>
+            <a class="header-link" href="examples/">Examples</a>
+          </nav>
+          <div class="header-actions">
+            <a class="header-pill" href="https://github.com/swhan0329/codex-co-author-guide">GitHub</a>
+          </div>
+        </div>
       </header>
 
-      <section class="hero">
-        <article class="hero-card">
-          <span class="eyebrow">Repository-level Git hook pattern</span>
-          <h1>Make Codex show up in your Git commits.</h1>
-          <p class="lede">
-            This repo documents how to use
-            <a href="https://github.com/sigridjineth/sample-codex-coauthor">sample-codex-coauthor</a>
-            so commits automatically append
-            <code>Co-authored-by: codex &lt;codex@openai.com&gt;</code>.
-          </p>
-          <div class="button-row">
-            <a class="button primary" href="ko/">한국어 가이드</a>
-            <a class="button secondary" href="en/">English guide</a>
-            <a class="button secondary" href="examples/">Real example</a>
-          </div>
-        </article>
-
-        <aside class="stack">
-          <div class="card">
-            <div class="label">What this is not</div>
-            <div class="value">Not a Codex installer</div>
-            <p class="muted">
-              You install Codex app or CLI once for yourself. You enable the
-              co-author hook once per repository clone.
-            </p>
-          </div>
-          <div class="card">
-            <div class="label">What changes</div>
-            <div class="value">Only the commit trailer</div>
-            <p class="muted">
-              You still do normal Git work yourself: add, commit, push, open a
-              PR, and merge.
-            </p>
+      <div class="doc-layout">
+        <aside class="sidebar">
+          <div class="sidebar-inner">
+            <div class="sidebar-group">
+              <div class="sidebar-title">Home</div>
+              <ul class="sidebar-list">
+                <li><a class="active" href="#overview">Overview</a></li>
+                <li><a href="#two-paths">Scripts and skills</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#next">Next steps</a></li>
+              </ul>
+            </div>
+            <div class="sidebar-group">
+              <h3>Guides</h3>
+              <ul class="sidebar-list">
+                <li><a href="ko/">Korean guide</a></li>
+                <li><a href="en/">English guide</a></li>
+                <li><a href="examples/">Examples</a></li>
+              </ul>
+            </div>
+            <div class="sidebar-group">
+              <h3>Source repos</h3>
+              <ul class="sidebar-list">
+                <li>
+                  <a href="https://github.com/sigridjineth/sample-codex-coauthor">
+                    sample-codex-coauthor
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/swhan0329/vehicle_speed_estimation">
+                    vehicle_speed_estimation
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </aside>
-      </section>
 
-      <section class="section">
-        <h2>Two valid ways to use the original sample repo</h2>
-        <div class="card-grid">
-          <article class="card">
-            <div class="label">Script path</div>
-            <h3>Use the shell script directly</h3>
-            <pre class="shell"><code>bash scripts/setup-codex-attribution.sh</code></pre>
-            <p class="muted">
-              Best default for beginners. Minimal, explicit, and easy to teach.
-            </p>
-          </article>
-          <article class="card">
-            <div class="label">Skill path</div>
-            <h3>Ask Codex to run the repo-local skills</h3>
-            <ul>
-              <li><code>$install-codex-coauthor-hook</code></li>
-              <li><code>$add-ai-coauthor</code></li>
-              <li><code>$show-ai-attribution-status</code></li>
-            </ul>
-            <p class="muted">
-              The original sample repo also supports a more agent-native flow.
-            </p>
-          </article>
-          <article class="card">
-            <div class="label">Practical path</div>
-            <h3>Keep only the minimum in production repos</h3>
-            <ul>
-              <li><code>.githooks/prepare-commit-msg</code></li>
-              <li><code>.gitmessage</code></li>
-              <li><code>scripts/setup-codex-attribution.sh</code></li>
-            </ul>
-            <p class="muted">
-              This is the approach used in the real repository example.
-            </p>
-          </article>
-        </div>
-      </section>
+        <main class="content">
+          <article class="article">
+            <header class="article-header" id="overview">
+              <div class="article-meta">
+                <span class="eyebrow">Repository-level Git hook pattern</span>
+                <span>Updated for bilingual docs and webpage delivery</span>
+              </div>
+              <h1>Make Codex show up in your Git commits.</h1>
+              <p class="summary">
+                This documentation explains how to use
+                <a href="https://github.com/sigridjineth/sample-codex-coauthor">sample-codex-coauthor</a>
+                so a normal Git commit automatically appends
+                <code>Co-authored-by: codex &lt;codex@openai.com&gt;</code>.
+                It does not replace your normal GitHub flow. It simply makes the
+                co-author trailer automatic.
+              </p>
+              <div class="action-row">
+                <a class="button primary" href="ko/">Read in Korean</a>
+                <a class="button" href="en/">Read in English</a>
+                <a class="button ghost" href="examples/">See real example</a>
+              </div>
+              <div class="inline-meta">
+                <span class="pill">Docs repo</span>
+                <span class="pill">Static web pages</span>
+                <span class="pill">GitHub-friendly Markdown</span>
+              </div>
+            </header>
 
-      <section class="section">
-        <h2>Quick links</h2>
-        <div class="two-col">
-          <div class="card">
-            <div class="label">Guides</div>
-            <ul>
-              <li><a href="ko/">Korean guide</a></li>
-              <li><a href="en/">English guide</a></li>
-              <li><a href="examples/">Example pages</a></li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="label">Source repos</div>
-            <ul>
-              <li>
-                <a href="https://github.com/sigridjineth/sample-codex-coauthor">
-                  Original sample repo
+            <section class="article-section" id="two-paths">
+              <h2>Two valid ways to use the original sample repo</h2>
+              <p>
+                The original sample repository supports both a direct script path
+                and a more agent-native Codex skill path.
+              </p>
+              <div class="panel-grid">
+                <div class="panel">
+                  <div class="label">Script path</div>
+                  <h3>Run the setup shell script directly</h3>
+                  <pre><code>bash scripts/setup-codex-attribution.sh</code></pre>
+                  <p class="muted">
+                    Best default for beginners because it is explicit and easy to
+                    teach in a README or blog post.
+                  </p>
+                </div>
+                <div class="panel">
+                  <div class="label">Skill path</div>
+                  <h3>Ask Codex to use repo-local skills</h3>
+                  <ul>
+                    <li><code>$install-codex-coauthor-hook</code></li>
+                    <li><code>$add-ai-coauthor</code></li>
+                    <li><code>$show-ai-attribution-status</code></li>
+                  </ul>
+                  <p class="muted">
+                    Useful when you want the workflow to feel native inside Codex.
+                  </p>
+                </div>
+                <div class="panel">
+                  <div class="label">Practical path</div>
+                  <h3>Keep a production repo minimal</h3>
+                  <ul>
+                    <li><code>.githooks/prepare-commit-msg</code></li>
+                    <li><code>.gitmessage</code></li>
+                    <li><code>scripts/setup-codex-attribution.sh</code></li>
+                  </ul>
+                  <p class="muted">
+                    This is the setup used in the real example repository.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="article-section" id="docs">
+              <h2>Choose the version you want to read</h2>
+              <div class="link-grid">
+                <div class="panel">
+                  <div class="label">Korean</div>
+                  <h3>Practical Korean guide</h3>
+                  <p class="muted">
+                    Use this if your primary audience is Korean-speaking and you
+                    want the easiest explanation path.
+                  </p>
+                  <div class="action-row">
+                    <a class="button primary" href="ko/">Open Korean guide</a>
+                    <a class="button" href="ko/README.md">Markdown</a>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="label">English</div>
+                  <h3>Practical English guide</h3>
+                  <p class="muted">
+                    Use this for broader sharing or when linking from English
+                    posts and GitHub conversations.
+                  </p>
+                  <div class="action-row">
+                    <a class="button primary" href="en/">Open English guide</a>
+                    <a class="button" href="en/README.md">Markdown</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="article-section" id="next">
+              <h2>Next step: read the real repository example</h2>
+              <p>
+                The most practical page in this repo is the example for
+                <code>vehicle_speed_estimation</code>. It shows exactly what to do
+                after cloning a real repository.
+              </p>
+              <div class="callout">
+                <strong>Recommended reading order:</strong>
+                Home → Korean or English guide → vehicle_speed_estimation example
+              </div>
+              <div class="action-row">
+                <a class="button primary" href="examples/vehicle_speed_estimation/ko/">
+                  Open Korean example
                 </a>
-              </li>
-              <li>
-                <a href="https://github.com/swhan0329/vehicle_speed_estimation">
-                  vehicle_speed_estimation
+                <a class="button" href="examples/vehicle_speed_estimation/">
+                  Open English example
                 </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="callout note">
-          <p>
-            If you want to share this on LinkedIn or in a blog post, keep the post
-            short and link to the detailed guide here. The practical explanation is
-            easier to consume as a dedicated document than as a single social post.
-          </p>
-        </div>
-      </section>
+              </div>
+              <div class="footer-note">
+                This site is designed to be short enough for social sharing and
+                detailed enough for GitHub readers who want a real setup path.
+              </div>
+            </section>
+          </article>
+        </main>
 
-      <footer class="footer">
-        Built as static GitHub-friendly documentation with both Markdown source
-        files and webpage versions.
-      </footer>
-    </main>
+        <aside class="toc">
+          <div class="toc-inner">
+            <div class="toc-group">
+              <div class="toc-title">On this page</div>
+              <ul class="toc-list">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#two-paths">Scripts and skills</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#next">Next steps</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>
