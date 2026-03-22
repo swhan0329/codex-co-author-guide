@@ -35,3 +35,19 @@ This repo separates the documentation from the application repository so the gui
 This is not a Codex installer.
 
 It is a repository-level Git hook pattern. You install Codex app or CLI once for yourself, but you enable the co-author hook once per local clone.
+
+## This repo also uses Codex co-author attribution
+
+This documentation repository includes the minimal hook setup as well.
+
+Run:
+
+```bash
+bash scripts/setup-codex-attribution.sh
+```
+
+After that, future commits in this repository will automatically append:
+
+```text
+Co-authored-by: codex <codex@openai.com>
+```
