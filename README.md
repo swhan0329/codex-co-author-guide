@@ -24,6 +24,8 @@ This repo separates the documentation from the application repository so the gui
 - [Korean guide](ko/README.md)
 - [English guide](en/README.md)
 - [vehicle_speed_estimation example](examples/vehicle_speed_estimation.md)
+- [Korean vehicle_speed_estimation example](examples/vehicle_speed_estimation.ko.md)
+- [Web docs landing page](index.html)
 
 ## Source repositories
 

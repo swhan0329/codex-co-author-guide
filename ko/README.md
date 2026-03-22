@@ -120,4 +120,4 @@ bash scripts/setup-codex-attribution.sh
 
 ## 실제 적용 예시
 
-실제 예시는 [vehicle_speed_estimation 예시](../examples/vehicle_speed_estimation.md)를 보면 됩니다.
+실제 예시는 [vehicle_speed_estimation 예시](../examples/vehicle_speed_estimation.ko.md)를 보면 됩니다.

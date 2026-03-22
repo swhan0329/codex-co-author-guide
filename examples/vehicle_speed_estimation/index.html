@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vehicle_speed_estimation Example</title>
+    <meta
+      name="description"
+      content="Real-world example of applying the sample-codex-coauthor pattern."
+    >
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../assets/docs.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">Codex Co-author Guide</div>
+        <nav class="nav">
+          <a href="../../">Home</a>
+          <a href="../../ko/">Korean</a>
+          <a href="../../en/">English</a>
+          <a class="active" href="../">Examples</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <article class="hero-card">
+          <span class="eyebrow">English example</span>
+          <h1><code>vehicle_speed_estimation</code> with a minimal Codex co-author setup</h1>
+          <p class="lede">
+            This example shows how the original sample repo can be simplified for
+            a real application repository while keeping the core trailer workflow.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="../vehicle_speed_estimation.md">Markdown source</a>
+            <a class="button secondary" href="ko/">한국어 페이지</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="section">
+        <h2>What was kept</h2>
+        <ul>
+          <li><code>.githooks/prepare-commit-msg</code></li>
+          <li><code>.gitmessage</code></li>
+          <li><code>scripts/setup-codex-attribution.sh</code></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>What was removed</h2>
+        <p>
+          The original sample repo also included repo-local Codex skill files
+          under <code>.agents/skills</code>. Those were removed in the real
+          application repository because they were not required for the core
+          Git hook workflow.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Actual tested flow</h2>
+        <ol>
+          <li>make a small code change</li>
+          <li>run tests successfully</li>
+          <li>enable Codex co-author attribution</li>
+          <li>create a commit</li>
+          <li>confirm the commit body includes the Codex trailer</li>
+          <li>push the branch to GitHub</li>
+        </ol>
+        <pre class="plain"><code>Co-authored-by: codex &lt;codex@openai.com&gt;</code></pre>
+      </section>
+
+      <section class="section">
+        <h2>Why this example matters</h2>
+        <div class="two-col">
+          <div class="card">
+            <div class="label">Original sample repo</div>
+            <p>Shows both script-based usage and skill-based usage.</p>
+          </div>
+          <div class="card">
+            <div class="label">Production repository</div>
+            <p>May prefer the smallest possible footprint while keeping the same effect.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

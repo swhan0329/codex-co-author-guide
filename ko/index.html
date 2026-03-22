@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codex Co-author 가이드</title>
+    <meta
+      name="description"
+      content="sample-codex-coauthor를 실제 레포에 붙여 쓰는 한국어 실전 가이드"
+    >
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/docs.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">Codex Co-author Guide</div>
+        <nav class="nav">
+          <a href="../">Home</a>
+          <a class="active" href="./">Korean</a>
+          <a href="../en/">English</a>
+          <a href="../examples/">Examples</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <article class="hero-card">
+          <span class="eyebrow">한국어 실전 가이드</span>
+          <h1>Codex를 GitHub co-author처럼 남기는 가장 쉬운 방법</h1>
+          <p class="lede">
+            이 문서는
+            <a href="https://github.com/sigridjineth/sample-codex-coauthor">sample-codex-coauthor</a>를
+            실제 레포에 적용해서
+            <code>Co-authored-by: codex &lt;codex@openai.com&gt;</code>를
+            자동으로 붙이는 흐름을 설명합니다.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="../examples/vehicle_speed_estimation/ko/">
+              한국어 예시 보기
+            </a>
+            <a class="button secondary" href="README.md">Markdown source</a>
+          </div>
+        </article>
+        <aside class="stack">
+          <div class="card">
+            <div class="label">핵심</div>
+            <div class="value">레포 clone마다 한 번</div>
+            <p class="muted">
+              Codex 설치가 아니라, 특정 레포의 로컬 Git 설정을 켜는 단계입니다.
+            </p>
+          </div>
+          <div class="card">
+            <div class="label">자동화 범위</div>
+            <div class="value">commit trailer 추가</div>
+            <p class="muted">
+              push, PR, merge는 여전히 평소 GitHub 흐름대로 진행합니다.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>언제 쓰면 되나</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>쓰면 좋은 경우</h3>
+            <ul>
+              <li>Codex app 또는 CLI로 수정할 예정</li>
+              <li>직접 <code>git commit</code> 할 예정</li>
+              <li>GitHub에서 Codex co-author 표시를 남기고 싶음</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>굳이 안 써도 되는 경우</h3>
+            <ul>
+              <li>Codex는 쓰지만 co-author 표시가 필요 없음</li>
+              <li>그냥 일반 커밋 흐름이면 충분함</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>자동으로 붙는 문장</h3>
+            <pre class="plain"><code>Co-authored-by: codex &lt;codex@openai.com&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>기본 흐름</h2>
+        <ol>
+          <li>레포를 clone 한다</li>
+          <li><code>bash scripts/setup-codex-attribution.sh</code>를 한 번 실행한다</li>
+          <li>Codex app 또는 CLI로 작업한다</li>
+          <li>테스트를 돌린다</li>
+          <li>평소처럼 <code>git commit</code> 한다</li>
+          <li>커밋 본문에 trailer가 붙었는지 확인한다</li>
+          <li><code>git push</code> 후 PR을 연다</li>
+        </ol>
+        <pre class="shell"><code>bash scripts/setup-codex-attribution.sh
+git add .
+git commit -m "Fix small bug"
+git show -s --format=%B HEAD</code></pre>
+      </section>
+
+      <section class="section">
+        <h2>왜 새 clone에서는 다시 해야 하나</h2>
+        <p>
+          setup 스크립트는 레포 파일이 아니라 로컬 Git 설정인
+          <code>.git/config</code>를 바꿉니다.
+        </p>
+        <div class="two-col">
+          <div class="card">
+            <div class="label">다시 안 해도 되는 경우</div>
+            <ul>
+              <li>같은 컴퓨터</li>
+              <li>같은 clone</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="label">다시 해야 하는 경우</div>
+            <ul>
+              <li>새 컴퓨터</li>
+              <li>새 clone</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>원본 sample repo는 skill로도 쓸 수 있다</h2>
+        <p>
+          원본 repo는 스크립트 방식뿐 아니라 repo-local Codex skills도 제공합니다.
+        </p>
+        <div class="two-col">
+          <div class="card">
+            <div class="label">스크립트 방식</div>
+            <pre class="shell"><code>bash scripts/setup-codex-attribution.sh</code></pre>
+          </div>
+          <div class="card">
+            <div class="label">skill 방식</div>
+            <ul>
+              <li><code>$install-codex-coauthor-hook</code></li>
+              <li><code>$add-ai-coauthor</code></li>
+              <li><code>$show-ai-attribution-status</code></li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout note">
+          <p>
+            초심자에게는 스크립트 방식이 제일 쉽습니다. 하지만 원본 sample repo를 소개할
+            때는 “스크립트로도 되고, Codex skill로도 된다”까지 같이 적어주는 게 가장
+            정확합니다.
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        더 자세한 적용 흐름은
+        <a href="../examples/vehicle_speed_estimation/ko/">vehicle_speed_estimation 한국어 예시</a>
+        에 정리되어 있습니다.
+      </footer>
+    </main>
+  </body>
+</html>
